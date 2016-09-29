@@ -13,4 +13,12 @@ public class MeleeMovement : MonoBehaviour
 			state.speed = 0.5F;
 		}
 	}
+
+	void Update ()
+	{
+		if(Input.GetKeyDown("+"))
+    	{
+       		anim.Play("standing_melee_attack_downward", PlayMode.StopAll);
+     	}
+	}
 }
