@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 /// <summary>
-/// Creates wandering behaviour for a CharacterController.
+
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
-public class Wander : MonoBehaviour
+public class wander : MonoBehaviour
 {
 	public float speed = 5;
 	public float directionChangeInterval = 1;
