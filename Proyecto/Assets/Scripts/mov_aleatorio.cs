@@ -9,7 +9,7 @@ public class mov_aleatorio : MonoBehaviour {
 	}
 	void OnCollision(Collision cl)
 	{
-		if(cl.gameObject.name=="El Lechero")
+		if(cl.gameObject.name=="Audience")
 		{
 			Destroy(cl.gameObject);
 		}
