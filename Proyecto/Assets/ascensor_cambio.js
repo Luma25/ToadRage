@@ -9,7 +9,6 @@ function Update () {
 }
 function OnCollisionEnter(collision : Collision)
 {
-    if (collision.gameObject.tag == "Player") {
-        Application.LoadLevel ("Ascensor");
-    }
-}
+	Application.LoadLevel ("Ascensor");     
+
+ }
