@@ -27,63 +27,39 @@ public class hola : MonoBehaviour {
 
 	if (Input.GetKeyDown (KeyCode.RightArrow))
 	{	
-<<<<<<< HEAD
-
-		if (j<4)
-=======
 		if(j==4)
->>>>>>> origin/master
 		{
 			j=0;
 			childsG[j].GetComponent<Renderer>().material.color = Color.red;
 			childsG[4].GetComponent<Renderer>().material.color = Color.white;
 		}
-<<<<<<< HEAD
-		else if (j==4)
-=======
 		else if (j<4)
->>>>>>> origin/master
 		{
 			j=0;
 			childsG[4].GetComponent<Renderer>().material.color = Color.white;
 			childsG[j].GetComponent<Renderer>().material.color = Color.red;
-<<<<<<< HEAD
-=======
 			childsG[j-1].GetComponent<Renderer>().material.color = Color.white;
->>>>>>> origin/master
 		}
 	}
 
 	if (Input.GetKeyDown (KeyCode.LeftArrow))
 	{	
-<<<<<<< HEAD
-
-		if (j>0)
-=======
 		if(j>0)
->>>>>>> origin/master
+
 		{
 			j=j-1;
 			childsG[j].GetComponent<Renderer>().material.color = Color.red;
 			childsG[j+1].GetComponent<Renderer>().material.color = Color.white;
 
 		}
-<<<<<<< HEAD
+
 		else if(j==0)
 		{
 
 			j=4;
 			childsG[0].GetComponent<Renderer>().material.color = Color.white;
 			childsG[j].GetComponent<Renderer>().material.color = Color.red;
-=======
-		else if (j==0)
-		{
-			j=4;
-			childsG[j].GetComponent<Renderer>().material.color = Color.red;
-			childsG[0].GetComponent<Renderer>().material.color = Color.white;
->>>>>>> origin/master
 		}
-	
 	}
 	if (Input.GetKeyDown (KeyCode.Space))
 	{
