@@ -41,6 +41,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
+		void OnTriggerEnter(Collider other) 
+		{
+			if (other.gameObject.CompareTag ("Persona"))
+			{
+				other.gameObject.SetActive (false);
+			}
+
+		}
+
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
