@@ -9,6 +9,7 @@ public class MeleeMovement : MonoBehaviour
 	public float speedH = 50, speedV = 50, runSpeed = 100;
 	float InputH, InputV, moveZ, turn;
 	bool Run, punch, kick;
+	float move;
 
 	void Start () 
 	{
@@ -39,16 +40,24 @@ public class MeleeMovement : MonoBehaviour
 
 		if(Run)
 		{
-			moveZ = InputV * runSpeed * Time.deltaTime;
+			move = InputV * runSpeed * Time.deltaTime;
 		}
 		else
 		{
-			moveZ = InputV * speedV * Time.deltaTime;
+			move = InputV * speedV * Time.deltaTime;
 		}
+
+		Debug.Log ("m: " + move);
+
+		float moveX = Mathf.Sin (trnsfrm.eulerAngles.y * (Mathf.PI / 180)) * move;
+		float moveZ2 = Mathf.Cos (trnsfrm.eulerAngles.y * (Mathf.PI / 180)) * move;
+
+		Debug.Log ("rot: " + transform.rotation.y + ", " + Mathf.Sin(trnsfrm.eulerAngles.y * (Mathf.PI/180)));
+		Debug.Log ("mx, mz: " + moveX + ", " + moveZ2);
 
 		turn = InputH * speedH * Time.deltaTime;
 
-		rbody.velocity = new Vector3 (0, 0, moveZ);
+		rbody.velocity = new Vector3 (moveX, 0, moveZ2);
 		trnsfrm.Rotate(0, turn, 0);
 
 
