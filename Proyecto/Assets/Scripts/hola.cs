@@ -35,7 +35,7 @@ public class hola : MonoBehaviour {
 		}
 		else if (j<4)
 		{
-			j=0;
+			j=j+1;
 			childsG[4].GetComponent<Renderer>().material.color = Color.white;
 			childsG[j].GetComponent<Renderer>().material.color = Color.red;
 			childsG[j-1].GetComponent<Renderer>().material.color = Color.white;
