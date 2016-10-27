@@ -90,6 +90,7 @@ public class MeleeMovement : MonoBehaviour
 		}
 	}
 
+	/*
 	void Attacked (Collider col)
 	{
 		Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("HitBox"));
@@ -100,4 +101,5 @@ public class MeleeMovement : MonoBehaviour
 				continue;
 		}
 	}
+	*/
 }

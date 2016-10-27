@@ -32,6 +32,7 @@ public class DummyScript : MonoBehaviour {
      
      // Update is called once per frame
     void OnTriggerEnter(Collider collider_dummy) {
+        //LayerMask.GetMask("HitBox")
         if(collider_dummy.name == "El Lechero") {
             if(vida > 1){
                 vida = vida - 1;
