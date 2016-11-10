@@ -47,6 +47,15 @@ public class MeleeMovement : MonoBehaviour
 			move = InputV * speedV * Time.deltaTime;
 		}
 
+		if (Input.GetKey (KeyCode.Space)) 
+		{
+			anim.SetBool ("Jump", true);	
+		} 
+		else 
+		{ 
+			anim.SetBool ("Jump", false);
+		}
+
 		Debug.Log ("m: " + move);
 
 		float moveX = Mathf.Sin (trnsfrm.eulerAngles.y * (Mathf.PI / 180)) * move;

@@ -5,6 +5,10 @@ public class DummyScript : MonoBehaviour {
 
     public Collider collider_dummy;
     public Animator anim;
+    public AudioSource audio;
+    public AudioClip hitsound;
+    public GameObject enemy;
+
 
 	 public float velocidadMax;
      
@@ -23,7 +27,9 @@ public class DummyScript : MonoBehaviour {
      // Use this for initialization
      void Start () {
         collider_dummy = GetComponent<Collider> ();
+        audio = GetComponent<AudioSource> ();
         anim = GetComponent<Animator> ();
+        enemy = GetComponent<GameObject> ();
         x = Random.Range(-velocidadMax, velocidadMax);
         z = Random.Range(-velocidadMax, velocidadMax);
         angulo = Mathf.Atan2(x, z) * (180 / 3.141592f) ;
@@ -33,15 +39,22 @@ public class DummyScript : MonoBehaviour {
      // Update is called once per frame
     void OnTriggerEnter(Collider collider_dummy) {
         //LayerMask.GetMask("HitBox")
+        print(collider_dummy.name);
         if(collider_dummy.name == "El Lechero") {
-            if(vida > 1){
-                vida = vida - 1;
-                anim.Play ("Hit", -1, 0f);
-            }
-            else if(vida == 1) {
-                vida = vida - 1;
-                velocidadMax=0;
-                anim.Play ("dead", -1, 0f);   
+            //Get Key, Get animation (hit, o kick) return true
+            if(true){
+                if(vida > 1){
+                    vida = vida - 1;
+                    anim.Play ("Hit", -1, 0f);
+                    audio.Play();
+                }
+                else if(vida == 1) {
+                    vida = vida - 1;
+                    velocidadMax=0;
+                    audio.Play();
+                    anim.Play ("dead", -1, 0f);   
+                    Destroy(enemy);
+                }
             }
         }
     }
@@ -84,5 +97,6 @@ public class DummyScript : MonoBehaviour {
          }
  
          transform.localPosition = new Vector3(transform.localPosition.x + x, transform.localPosition.y, transform.localPosition.z + z);
+
      }
 }
