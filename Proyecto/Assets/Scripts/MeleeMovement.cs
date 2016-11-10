@@ -6,18 +6,22 @@ public class MeleeMovement : MonoBehaviour
 	public Animator anim;
 	public Rigidbody rbody;
 	public Transform trnsfrm;
-	public float speedH = 50, speedV = 50, runSpeed = 100;
+	public float speedH = 50, speedV = 50, runSpeed = 100, JumpTime = 1;
 	float InputH, InputV, moveZ, turn;
-	bool Run, punch, kick;
-	float move;
+	[SerializeField] float JumpPower = 12f;
+	bool jump, Run, punch, kick, air;
+	float move, contadorSalto, contadorCaida;
 
 	void Start () 
 	{
+		contadorSalto = 0;
+		contadorCaida = 0;
 		anim = GetComponent<Animator> ();
 		rbody = GetComponent<Rigidbody> ();
 		trnsfrm = GetComponent<Transform> ();
 		Run = false;
 		punch = kick = true;
+		air = false;
 	}
 
 	void Update ()
@@ -50,11 +54,13 @@ public class MeleeMovement : MonoBehaviour
 
 		if (Input.GetKey (KeyCode.Space)) 
 		{
-			anim.SetBool ("Jump", true);	
+			anim.SetBool ("Jump", true);
+			jump = true;
 		} 
 		else 
 		{ 
 			anim.SetBool ("Jump", false);
+			jump = false;
 		}
 
 		Debug.Log ("m: " + move);
@@ -69,6 +75,28 @@ public class MeleeMovement : MonoBehaviour
 
 		rbody.velocity = new Vector3 (moveX, 0, moveZ2);
 		trnsfrm.Rotate(0, turn, 0);
+
+
+		/*
+		if(contadorSalto < JumpTime && jump) 
+		{
+			rbody.velocity = new Vector3(rbody.velocity.x, JumpPower, rbody.velocity.z);
+			contadorSalto += Time.deltaTime;
+			air = true;
+		}
+
+		else if (contadorSalto >= JumpTime || air) 
+		{
+			rbody.velocity = new Vector3 (rbody.velocity.x, -JumpPower, rbody.velocity.z);
+			contadorSalto -= Time.deltaTime;
+		}
+
+		if (contadorSalto <= 0)
+		{
+			air = false;
+			contadorSalto = 0;
+		}
+		*/
 
 
 		if(Input.GetKeyDown(KeyCode.A))
@@ -100,16 +128,12 @@ public class MeleeMovement : MonoBehaviour
 		}
 	}
 
-	/*
-	void Attacked (Collider col)
+	void FixedUpdate()
 	{
-		Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("HitBox"));
-
-		foreach (Collider c in cols) 
+		if (jump) 
 		{
-			if (c.transform.parent.parent == transform)
-				continue;
+			rbody.AddForce (Vector3.up * JumpPower);
 		}
 	}
-	*/
+
 }

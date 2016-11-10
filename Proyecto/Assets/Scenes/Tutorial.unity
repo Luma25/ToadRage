@@ -213,9 +213,20 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 73347786424c544e1a76a296927d0810, type: 2}
+    - target: {fileID: 54000013703566640, guid: f06f5d23301994834a439071cb6ad0f6,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000013703566640, guid: f06f5d23301994834a439071cb6ad0f6,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000010497707146, guid: f06f5d23301994834a439071cb6ad0f6, type: 2}
     - {fileID: 114000011582306398, guid: f06f5d23301994834a439071cb6ad0f6, type: 2}
+    - {fileID: 136000012869126630, guid: f06f5d23301994834a439071cb6ad0f6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f06f5d23301994834a439071cb6ad0f6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1737877733 stripped
